@@ -23,3 +23,11 @@ def get_gradient_at_m(x, y, m, b):
         diff += x[i] * (y[i] - (m * x[i] + b))
     m_gradient = (-2 / N) * diff
     return m_gradient
+
+# step gradient
+def step_gradient(x, y, b_current, m_current):
+    b_gradient = get_gradient_at_b(x, y, b_current, m_current)
+    m_gradient = get_gradient_at_m(x, y, b_current, m_current)
+    b = b_current - (0.01 * b_gradient)
+    m = m_current - (0.01 * m_gradient)
+    return [b, m]
